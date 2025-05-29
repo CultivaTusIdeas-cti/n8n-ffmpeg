@@ -1,14 +1,11 @@
-FROM node:18-bullseye-slim
+FROM n8nio/n8n
 
-# Instala ffmpeg
-RUN apt update && apt install -y ffmpeg
+# Instala FFmpeg
+USER root
+RUN apt-get update && apt-get install -y ffmpeg && apt-get clean
 
-# Instala n8n
-RUN npm install -g n8n
+# Usa el usuario n8n predeterminado
+USER node
 
-# Crea volumen y expone puerto
-VOLUME ["/home/node/.n8n"]
+# Puerto expuesto por n8n
 EXPOSE 5678
-
-# Ejecuta n8n
-CMD ["n8n"]
