@@ -8,6 +8,6 @@ RUN apt-get update && apt-get install -y ffmpeg && apt-get clean
 USER node
 
 # Puerto expuesto por n8n
-EXPOSE 5678
+EXPOSE 8080
 
 CMD ["n8n"]
